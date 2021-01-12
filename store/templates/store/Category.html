@@ -1,0 +1,22 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+<h2 class="subtitle">Related products</h2>
+    <div class="row">
+     {% for related_product in related_products %}
+    <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
+            <div class="card-img-top">
+                <img src="{{ related_product.image.url }}" class="img-thumbnail p-1" width = "300" height = "300">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{related_product.name}}</h5>
+                  <p class="card-text">{{related_product.description}}</p>
+                  <p  class="card-text">{{related_product.brand}}</p>
+                  <p class="card-text">{{ related_product.price }} EPG</p>
+                  <a class = "btn btn-outline-success" href="{% url 'product' related_product.id %}" >View</a>
+            </div>
+    </div>
+    {% endfor %}
+    </div>
+
+{% endblock content %}

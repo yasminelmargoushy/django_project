@@ -1,0 +1,53 @@
+{% extends "blog/base2.html" %}
+{% load static %}
+{% block content %}
+<div class="content-section">
+   <h1>{{ request.user.username }}'s Favourites</h1>
+      {% csrf_token %}
+      <div class="row">
+  {% for post in new %}
+      <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
+        <div class="card-img-top" alt="...">
+          {% if post.header_image %}
+            <img src="{{ post.header_image.url }}" class="img-thumbnail p-1" width = "300" height = "300"style="object-fit: cover;">
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <small class="text-muted"><a href="{% url 'user-posts' post.author.username %}">{{ post.author }} </a> {{ post.date_posted|date:"F d, Y" }}</small>
+          <h5 class="card-title"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
+          <p class="card-text">{{ post.content }}</p>
+          <a href="#" class="card-text">{{ post.category }}</a>
+          <p class="card-text">{{ post.price }} EPG</p>
+          <a href="#" class="btn btn-outline-info">Add to cart</a>
+          <span id="favourite-section">
+                <a href="{% url 'favourite_add' post.pk %}">
+                  <img  style = "width:25px ; height:25px"src = "{%static '/images/heart.png' %}">
+                </a>
+          </span>
+        </div>
+      </div>
+    {% endfor %}
+
+
+
+    {% for product in newS %}
+      <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
+        <div class="card-img-top" alt="...">
+            <img src="{{product.image.url}}" class="img-thumbnail p-1" width = "300" height = "300" style="object-fit: cover;">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name}}</a></h5>
+          <p class="card-text">{{ product.content }}</p>
+          <p class="card-text">{{ product.price }} EPG</p>
+          <a href="#" class="btn btn-outline-info">Add to cart</a>
+          <span id="favourite-section">
+                <a href="{% url 'favourite_addd' product.id %}">
+                  <img  style = "width:25px ; height:25px"src = "{%static '/images/heart.png' %}">
+                </a>
+          </span>
+        </div>
+      </div>
+    {% endfor %}
+</div>
+</div>
+{% endblock %}

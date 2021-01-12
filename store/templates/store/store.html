@@ -1,0 +1,75 @@
+{% extends "store/base.html" %}
+{%load static%}
+{% block content %}
+    <!----------------Products ---------------------------->
+    <div class="row">
+    {% for product in products %}
+    <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
+            <div class="card-img-top">
+                <img src="{{ product.image.url }}" class="img-thumbnail p-1" width = "300" height = "300" style="object-fit: cover;">
+            </div>
+            <div class="card-body">
+                  <h5 class="card-title"><a href="{% url 'product' product.id %}">{{product.name}}</a></h5>
+                  <p class="card-text">{{product.description}}</p>
+                  <a href="#" class="card-text">{{product.brand}}</a>
+                  <p class="card-text">{{ product.price }} EPG</p>
+                  {% if user.is_authenticated %}
+                  <button data-product = {{product.id}} data-action = "add" data-type="product"class = "btn btn-outline-info add-btn update-cart mr-3">Add to Cart</button>
+                  {% else %}
+                  <a href="{% url 'login' %}" class = "btn btn-outline-info mr-3"> Add to Cart</a>
+                  {% endif %}
+                  {% if user.is_authenticated %}
+                  {% if product.favourites.exists %}
+                   <a href="{% url 'favourite_addd' product.id %}">
+                    <img  style = "width:25px ; height:25px" src = "{%static '/images/heart.png' %}"></a>
+                  {% else %}
+                    <a href="{% url 'favourite_addd' product.id %}" >
+                      <img  style = "width:25px ; height:25px" src = "{%static '/blog/favicon.png' %}"></a>
+                  {% endif %}  
+                  {% endif %}  
+            </div>
+    </div>
+    {% endfor %}
+    </div>
+
+    <br>
+    <div class="container">
+     <div class="row">
+
+      {% if products.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ products.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in products.paginator.page_range %}
+        {% if products.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > products.number|add:'-3' and num < products.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if products.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ products.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ products.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+  </div>
+  <div class="row">
+    {% for category_product in category_products %}
+    <div class="card flex-row flex-wrap " style="width: 19rem;">
+            <div class="card-img-top">
+                <img src="{{ category_product.image.url }}" class="img-thumbnail p-1" width = "300" height = "300">
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">{{category_product.name}}</h5>
+                  <p class="card-text">{{category_product.description}}</p>
+                  <a href="#" class="card-text">{{category_product.brand}}</a>
+                  <p class="card-text">{{ category_product.price }} EPG</p>
+                  <a class = "btn btn-outline-success" href="{% url 'product' category_product.id %}" >View</a>
+            </div>
+    </div>
+    {% endfor %}
+    </div>
+  </div>
+{% endblock content %}

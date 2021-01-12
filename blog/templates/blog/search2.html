@@ -1,0 +1,32 @@
+{% extends 'blog/base2.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Search Results for <span class="text-info">"{{request.GET.keyword}}"</span></h3>
+      <hr>
+      {% for post in posts %}
+        <div class="row">
+          <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
+            <div class="card-img-top">
+              {% if post.header_image %}
+               <img src="{{ post.header_image.url }}" class="img-fluid" width = "300" height = "300">
+              {% endif %}
+            </div>
+         <div class="card-body">
+      <small class="text-muted"><a href="{% url 'user-posts' post.author.username %}">{{ post.author }} </a> {{ post.date_posted|date:"F d, Y" }}</small>
+      <h5 class="card-title"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
+      <p class="card-text">{{ post.content }}</p>
+      <a href="#" class="card-text">{{ post.category }}</a>
+      <p class="card-text">{{ post.price }} EPG</p>
+      <button data-product = {{post.id}} data-action = "add" data-type = "post" class="btn btn-outline-info update-cart">Add to cart</button>
+    </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,202 @@
+{% extends "store/base.html" %}
+ {%load static%}
+ {% block content %}
+
+
+ <div class = "container" >
+        <h1>CHECKOUT</h1>
+    </div>
+
+    <div class = "container">
+        
+        <form novalidate class ="border shadow-lg p-3 m-5 bg-white rounded">
+            <h4 class = "mb-3">
+                Fill the required information
+            </h4>
+            <div class = "row g-5">
+                <div class = "col-sm-6">
+                    <label for = "firstName" class = "form-label">
+                        <i class="fa fa-user"></i> First Name
+                    </label>
+                    <input id = "firstName" type = "text" class = "form-control" placeholder = "John" required >
+                    <div class = "invalid-feedback">
+                        Valid first name is required.
+                    </div>
+                </div>
+                <div class = "col-sm-6">
+                    <label for = "lastName" class = "form-label">
+                        <i class="fa fa-user"></i> Last Name
+                    </label>
+                    <input id = "lastName" type = "text" class = "form-control" placeholder = "Smith" required >
+                    <div class = "invalid-feedback">
+                        Valid Last name is required.
+                    </div>
+                </div>
+            </div>
+            <br>
+        
+            <div class = "row">
+                <div class = "col-sm-12">
+                    <label for = "username" class = "form-label">
+                        Username
+                    </label>
+                    <div class = "input-group">
+                        <span class = "input-group-text">@</span>
+                        <input id = "username" type = "text" class = "form-control" placeholder = "jsmith" required >
+                    </div>
+                    <div class = "invalid-feedback">
+                        Valid Username is required.
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+            <div class = "row">
+                <div class = "col-sm-12">
+                    <label for = "email" class = "form-label">
+                        <i class="fa fa-envelope"></i> Email
+                    </label>
+                    <div class = "input-group">
+                        <input id = "email" type = "text" class = "form-control" required >
+                    </div>
+                    <div class = "invalid-feedback">
+                        Valid Email is required.
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+            <div class = "row">
+                <div class = "col-sm-12">
+                    <label for = "username" class = "form-label">
+                        <i class="fa fa-address-card-o"></i> Full Address
+                    </label>
+                    <div class = "input-group">
+                        <input id = "address" type = "text" class = "form-control" required >
+                    </div>
+                    <div class = "invalid-feedback">
+                        Valid Address is required.
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class = "row">
+                <div style = "margin : 15px; " class = "column-md-6">
+                    <label for = "City" class = "form-label">
+                        <i class="fa fa-institution"></i> City
+                    </label>
+                    <select id = "username" class = "form-control" required >
+                        <option value="">Choose..</option>
+                        <option value="New Cairo">New Cairo</option>
+                        <option value="Naser City">Naser City</option>
+                        <option value="Fifth Settlement">Fifth Settlement</option>
+                        <option value="Sheraton">Sheraton</option>
+                        <option value="Shoubra">Shoubra</option>
+                        <option value = "El Maadi">El Maadi</option>
+                    </select>
+                    <div class = "invalid-feedback">
+                        Valid City is required
+                    </div>
+                </div>
+                <div class = "col-md-5" style = "margin : 15px; ">
+                    <label for = "postcode" class = "form-label">
+                        Postcode
+                    </label>
+                    <input id = "username" type = "number" class = "form-control" placeholder = "1234" required >
+                    <div class = "invalid-feedback">
+                        Valid Username is required.
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+            <hr class = "my-4">
+
+            <h4 class = "mb-3">Payment</h4>
+            <label for="fname">Accepted Cards</label>
+            <div class="icon-container">
+              <i class="fa fa-cc-visa" style="color:navy;"></i>
+              <i class="fa fa-cc-amex" style="color:blue;"></i>
+              <i class="fa fa-cc-mastercard" style="color:red;"></i>
+              <i class="fa fa-cc-discover" style="color:orange;"></i>
+              <br>
+            </div>
+            <div class = "form-check">
+                <input id = "creditCard" name = "paymentMethod" type="radio" class = "form-check-input" checked required>
+                <label for = "creditCard" >Credit Card</label>
+            </div>
+            <div class = "form-check">
+                <input id = "directDebit" name = "paymentMethod" type="radio" class = "form-check-input" checked required>
+                <label for = "directDebit" >Direct Debit</label>
+            </div>
+            <div class = "form-check">
+                <input id = "paypal" name = "paymentMethod" type="radio" class = "form-check-input" checked required>
+                <label for = "paypal" >PayPal</label>
+            </div>
+    
+            <div class = "row my-3 gy-3">
+                <div class = "col-md-6">
+                    <label for = "fullName" class = "form-label">
+                        Name on Card
+                    </label>
+                    <input id = "fullName" type ="text" class = "form-control">
+                    <small class = "text-muted"> 
+                        Full name as displayed on card.
+                    </small>
+                    <div class = "invalid-feedback">
+                        Name on card is required.
+                    </div>
+                </div>
+
+                <div class = "col-md-6">
+                    <label for = "cc-number" class = "form-label">
+                        Credit card Number
+                    </label>
+                    <input id = "cc-number" type ="text" class = "form-control">
+                    <div class = "invalid-feedback">
+                        Credit card number is required.
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class = "col-md-4">
+                    <label for = "cc-expire" class = "form-label">
+                        Expiration Year.
+                    </label>
+                    <input id = "cc-expire" type = "text" class = "form-control">
+                    <div class = "invalid-feedback">
+                        Expiration year is required.
+                    </div>
+                </div>
+                <div class = "col-md-4">
+                    <label for = "cc-expire" class = "form-label">
+                        Expiration month.
+                    </label>
+                    <input id = "cc-expire" type = "text" class = "form-control">
+                    <div class = "invalid-feedback">
+                        Expiration month is required.
+                    </div>
+                </div>
+                <div class = "col-md-4">
+                    <label for = "cc-cvv" class = "form-label">
+                        CVV.
+                    </label>
+                    <input id = "cc-cvv" type = "text" class = "form-control">
+                    <div class = "invalid-feedback">
+                        CVV is required.
+                    </div>
+                </div>
+                <br>
+            </div>
+            <hr class = "my-4">
+
+            <button class = "btn btn-success btn-lg btn-block">Place Order</button>
+        </form>
+    </div>
+
+    <!----------------End of Chackout ------------------->
+
+    <!-----------------Footer --------------------------->
+   
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends "blog/base2.html" %}
+{%load static%}
+{% block content %}
+<div class="container">
+<div class="mb-3"> <h1 class="mb-3">Posts by {{view.kwargs.username}} ({{ page_obj.paginator.count}})</h1></div>
+</div>
+<div class="row">
+
+    {% for post in posts %}
+    <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
+      <div class="card-img-top" alt="...">
+        {% if post.header_image %}
+          <img src="{{ post.header_image.url }}" class="img-thumbnail p-1" width = "300" height = "300">
+        {% endif %}
+      </div>
+    <div class="card-body">
+      <small class="text-muted">{{ post.author }} {{ post.date_posted|date:"F d, Y" }}</small>
+      <h5 class="card-title"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
+      <p class="card-text">{{ post.content }}</p>
+      <p class="card-text">{{ post.price }} EPG</p>
+      <a href="#" class="btn btn-outline-info">Add to cart</a>
+    </div>
+   </div>
+    {% endfor %}
+  </div>
+    <br>
+  <div class="container">
+    <div class="row">
+     {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-light mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-light mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-light mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-light mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-light mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-light mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+  </div>
+
+{% endblock content %}
+
+

@@ -1,0 +1,175 @@
+
+*{
+
+padding: 0;
+margin:0;
+box-sizing: border-box;
+}
+
+
+.headerr{
+background-color: black;
+}
+
+.page-title{
+  font-family:Helvetica;
+  text-align:center;
+  font-size:50px;
+  margin-bottom:20px;
+
+}
+.nav-link{
+font-size:17px;
+font-weight: 600;
+color: white;
+}
+
+
+.container{
+  width:80%;
+  margin-top:40px;
+  margin-bottom:40px;
+  overflow:hidden;
+}
+
+
+#containerE{
+  width:80%;
+  margin:80px;
+  padding:25px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  align-items:center;
+  justify-content:center;
+}
+
+
+
+.box a:hover{ /* selector is used to select elements when you mouse over them.*/
+  color:#cccccc;
+  background-color:#000000;
+}
+
+
+
+
+.content{
+  background-color: #B3B3B3;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+
+
+.dropdown1{
+  font-size: 17px;
+  border: none;
+  outline: none;
+  padding: 14px 16px;
+  background-color:inherit;
+  font-family: inherit;
+  margin: 0;
+
+}
+.content a:hover {
+  background-color:#000000;
+  color: white;
+}
+/*--------------Slides-----------*/
+.carousel-caption{
+    position: absolute;
+top:55%;
+transform: translate(-20%,-20%);
+left:-8%;
+    
+    
+    
+}
+.carousel-caption h1{
+font-size: 50px;
+font-weight:400;
+color: #ffffff;
+
+
+}
+
+
+.btn0{
+
+background-color:red;
+height:45px;
+width:150px;
+color:white;
+border:none;
+outline:none;
+
+
+}
+.btn0:hover {
+background-color:black;
+transition: 0.4s;}
+
+/*-----------Products-------------------*/
+
+.box-element{
+  box-shadow:black 0 0 16px;
+  background-color:rgb(248, 244, 244);
+  border-radius:4px;
+  padding: 10px;
+  margin:10px;
+}
+
+/*-----------Bestseller-----------------*/
+.collection span{
+
+padding: 5px;
+font-size: 19px;
+font-weight:800;
+color: red;
+
+
+}
+.collection p{
+font-size:16px;
+font-weight: 800;
+margin-left:5px;}
+
+.card {
+ border:none;
+
+
+}
+
+
+footer {
+  position: absolute;
+  width:100%;
+  padding:20px;
+  margin-top:20px;
+  color:white;
+  background-color:#070606;
+  text-align:center;
+}
+
+/* Cart adjustment */
+
+.box-element{
+
+  box-shadow:hsl(0,0%,80%) 0 0 16px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+
+}
+
+.cart-row{
+
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ececec;
+
+}

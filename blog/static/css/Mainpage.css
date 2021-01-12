@@ -1,0 +1,106 @@
+/* color of navbar*/ 
+
+.topnav {
+  background-color:#000000;
+  overflow: hidden;
+width: 100%;
+position:static;
+}
+/* styling of links of dropdown*/
+.topnav a{
+float: right;
+align-content: center;
+display: block;
+color: white;
+text-align: center;
+text-decoration: none;
+padding: 14px 16px;
+font-size: 17px;
+
+}
+
+
+
+/*hiding dropdown content*/
+
+.dropdown-content{
+  display: none;
+  position: absolute;
+  background-color: #B3B3B3;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+/*alligning every dropdown button next to the other*/
+
+.dropdown1 {
+  float: left;
+  overflow: hidden;
+
+}
+
+/* Cart adjustment */
+
+.box-element{
+
+  box-shadow:hsl(0,0%,80%) 0 0 16px;
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 10px;
+
+}
+
+.cart-row{
+
+  display: flex;
+  align-items: stretch;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ececec;
+
+}
+
+.quantity{
+
+  display: inline-block;
+  font-weight: 700;
+  padding-right: 10px;
+
+}
+
+.chg-quantity{
+
+  width: 12px;
+  cursor: pointer;
+  display: block;
+  margin-top: 5px;
+  transition: .1s;
+
+}
+/* sizes of boxes adjusting*/
+
+.dropdown1 .dropbtn {
+  font-size: 17px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color:inherit;
+  font-family: inherit;
+  margin: 0;
+}
+.topnav a:hover, .dropdown1:hover .dropbtn {
+  background-color:#3B3B3B;
+  color:white;
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  background-color:#000000;
+  color: white;
+}
+.dropdown1:hover .dropdown-content {
+  display:grid;
+ float: none;
+}
+.logo{order:none;
+}

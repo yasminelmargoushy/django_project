@@ -1,0 +1,166 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="eg">
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8d4c067090.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+
+        var user = '{{request.user}}'
+
+        function getToken(name)
+        {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !=='')
+            {
+                var cookies = document.cookie.split(';');
+                for (var i = 0;i<cookies.length;i++)
+                {
+                    var cookie = cookies[i].trim();
+                    if (cookie.substring(0,name.length+1)===(name + '='))
+                    {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length +1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        var csrftoken = getToken('csrftoken');
+    </script>
+
+</head>
+
+<body>
+     <style>
+      .bg-steel
+      {
+          background-color: black;
+      }
+      .col-md-4
+      {
+          position:fixed;
+          right: 30px;
+          width:30%;
+      }
+      .my-style
+      {
+          border-radius: 3;
+      }
+      footer {
+        position: absolute;
+        width:100%;
+        padding:20px;
+        margin-top:20px;
+        color:white;
+        background-color:#070606;
+        text-align:center;
+}
+
+
+    </style>
+    <header class="site-header">
+      <nav class="navbar navbar-expand-lg navbar-dark headerr" style="background-color: black;">
+      <a class="navbar-brand pl-5" href="{% url 'main' %}"><img src="{%static '/blog/Untitled.png' %}" /></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto ">
+              <li class="nav-item active ">
+                  <a class="nav-link pr-5" href="{% url 'store' %}">Our Store</a>
+              </li>
+              <li class="nav-item pr-5">
+                <a class="nav-item nav-link" href="{%url 'blog-home'%}">Market Place</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle pr-5 dropdown1" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Categories
+                  </a>
+                  <div class="dropdown-menu content " aria-labelledby="navbarDropdown">
+                  <form method="POST" action="/Category/" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <select name="Category">
+                      <option class="dropdown-item" value='E'>Electronics</option>
+                      <option class="dropdown-item" value="OW">Fashion</option>
+                      <option class="dropdown-item" value="F">Furniture</option>
+                      <option class="dropdown-item" value="Bg">Bags</option>
+                      <option class="dropdown-item" value="Sh" selected>Shoes</option>
+                      <option class="dropdown-item" value="S">Shorts</option>
+                    </select>
+                     <div class="field">
+                        <div class="control">
+                            <button class="button is-success">GO</button>
+                        </div>
+                    </div>
+                    </form>
+                  </div>
+              </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item pr-5">
+                  <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                 </li>
+                 <li class="nav-item pr-5">
+                  <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                 </li>
+                 <li class="nav-item pr-5">
+                    <a class="nav-item nav-link" href="{%url 'post-create'%}"><img style = "width:25px ; height:25px" src="{% static '/images/plus.jpg'%}"></a>
+                  </li>
+                 <li class="nav-item ">
+                 <a class="nav-link pr-5" href="{%url 'favourite_list'%}"><img  style = "width:25px ; height:25px"src = "{%static '/blog/favicon.png' %}" alt = "cart"> </a>
+              <li class="nav-item ">
+                  <a class="nav-link pr-5" href="{% url 'cart' %}"><img  style = "width:25px ; height:25px"src = "{%static '/blog/cart.png' %}" alt = "cart"></a>
+              </li>
+              </li>
+                  {% else %}
+                  <li class="nav-item pr-5">
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                 </li>
+                 <li class="nav-item pr-5">
+                    <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+                {% endif %} 
+                <li class="nav-item ">
+                  <a class="nav-link pr-5" href="{% url 'blog-about' %}">About us</a>
+              </li>
+              
+          </ul>
+      </div>
+  </nav>
+  <section style = "height : 70px; background-color: rgb(3, 3, 3); padding:15px ; color:#ffffff;">
+      <div style = "width:95%; margin:auto; overflow:hidden;" >
+        <h4 style = "float:left; margin-top:10px;" >Search for our products</h4>
+        <form style = "margin-top:15px; margin-bottom: 10px; float:right;" action="{% url 'search' %}" method="GET"> 
+          <button type = "search" style = "float:right; margin-bottom: 10px; height:30px; background-color:#ffffff; border:0; padding-left:20px; padding-right:20px; color:rgb(0, 0, 0);">Search</button>
+          <input style = " float:right; margin-bottom: 5px;margin-right: 5px; padding:10px; height:30px; width:250px; " type = "text" name="keyword" placeholder = "Search"> 
+           
+        </form>
+      </div>
+    </section>
+    </header>
+
+          <div class = "container" style="float: center;">
+          {% block content %}{% endblock %}
+          </div>
+     
+
+    <footer style="background-color: black;">
+        <p>MONTERO, Copyrights &copy;2020</p>
+    </footer>
+  
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+ </body>
+</html>

@@ -1,0 +1,78 @@
+{% extends "blog/base2.html" %}
+{%load static%}
+{% block content %}
+<div class="row">
+    {% for post in posts %}
+    <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
+      <div class="card-img-top" alt="...">
+        {% if post.header_image %}
+          <img src="{{ post.header_image.url }}" class="img-thumbnail p-1" width = "300" height = "300" style="object-fit: cover;">
+        {% endif %}
+      </div>
+    <div class="card-body">
+      <small class="text-muted"><a href="{% url 'user-posts' post.author.username %}">{{ post.author }} </a> {{ post.date_posted|date:"F d, Y" }}</small>
+      <h5 class="card-title"><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h5>
+      <p class="card-text">{{ post.content }}</p>
+      <a href="#" class="card-text">{{ post.category }}</a>
+      <p class="card-text">{{ post.price }} EPG</p>
+      <button data-product = {{post.id}} data-action = "add" data-type = "post" class="btn btn-outline-info update-cart">Add to cart</button>
+         {% if user.is_authenticated %}
+          {% if post.favourites.exists %}
+            <a href="{% url 'favourite_add' post.id %}">
+            <img  style = "width:25px ; height:25px" src = "{%static '/images/heart.png' %}"></a>
+          {% else %}
+            <a href="{% url 'favourite_add' post.id %}" >
+            <img  style = "width:25px ; height:25px" src = "{%static '/blog/favicon.png' %}"></a>
+          {% endif %}  
+        {% endif %} 
+    </div>
+   </div>
+    {% endfor %}
+    <br>
+  <div class="container">
+  <div class="row">
+     {% if is_paginated %}
+
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
+    {% endif %}
+  </div>
+  </div>
+    <!--<div class="col-md-4">
+          <div class="content-section">
+            <h1>Also Check</h1>
+              <ul class="list-group" >
+                <li class="list-group-item list-group-item-light mt-2">Best Seller</li>
+                <li class="list-group-item list-group-item-light mt-2">Sale</li>
+                <li class="list-group-item list-group-item-light mt-2">Black Friday offers</li>
+                <li class="list-group-item list-group-item-light mt-2">Winter Collection</li>
+                <li class="list-group-item list-group-item-light mt-2">New Collection</li>
+                <li class="list-group-item list-group-item-light mt-2">Women</li>
+                <li class="list-group-item list-group-item-light mt-2">Men</li>
+                <li class="list-group-item list-group-item-light mt-2">Kids</li>
+                <li class="list-group-item list-group-item-light mt-2">Home</li>
+                <li class="list-group-item list-group-item-light mt-3">Electronics</li>
+              </ul>
+            </p>
+          </div>
+        </div>-->
+</div>
+{% endblock content %}
+
+

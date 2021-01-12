@@ -1,0 +1,29 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Search Results for <span class="text-info">"{{request.GET.keyword}}"</span></h3>
+      <hr>
+      {% for product in products %}
+        <div class="row">
+          <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
+            <div class="card-img-top">
+            <img src="{{product.image.url}}" class="img-fluid">
+            </div>
+          <div class="col-md-8">
+            <h4>{{product.name}}</h4>
+            <p>{{product.description}}</p>
+            <a href="#" class="card-text">{{product.brand}}</a>
+            <p class="card-text">{{ product.price }} EPG</p>
+            <button data-product = {{product.id}} data-action = "add" class = "btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+</div>
+
+{% endblock content %}
