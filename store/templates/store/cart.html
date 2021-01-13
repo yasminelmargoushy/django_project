@@ -70,9 +70,11 @@
 					<tr>
 						<th><h5>Items: <strong>{{totalitems}}</strong></h5></th>
 						<th><h5>Total: <strong>{{total|floatformat:2}} EGP</strong></h5></th>
+						{% if postitems %}
 						<th>
 							<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
 						</th>
+						{% endif %}
 					</tr>
 				</table>
 

@@ -26,6 +26,7 @@ urlpatterns = [
     path('post/<int:pk>/delete/',PostDeleteView.as_view(), name='post-delete'),
     path('post/new/',PostCreateView.as_view(),name='post-create'),
     path('about/',views.about,name='blog-about'),
+    path('confirmation/',views.confirmation,name='confirmation'),
     path('profile/favorites/',user_views.favourite_list,name='favourite_list'),
     path('fav/<int:pk>/',user_views.favourite_add,name='favourite_add'),
     path('search2/', views.search, name="search2"),

@@ -1,7 +1,6 @@
 {% extends 'blog/base2.html' %}
 {% load static %}
 {% block content %}
-<div class="container">
   <div class="row">
     <div class="col-md-12">
       <h3>Search Results for <span class="text-info">"{{request.GET.keyword}}"</span></h3>
@@ -26,7 +25,6 @@
       {% endfor %}
     </div>
   </div>
-</div>
 </div>
 
 {% endblock content %}

@@ -5,7 +5,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>MONTERO OFFICIAL|About us</title>
+    <title>MONTERO OFFICIAL</title>
     <link href="test.css" rel="stylesheet">
     <link href="Mainpage.css" rel="stylesheet">
     <link href="test2.css" rel="stylesheet">
@@ -45,6 +45,34 @@
 </head>
 
 <body>
+       <style>
+      .bg-steel
+      {
+          background-color: black;
+      }
+      .col-md-4
+      {
+          position:fixed;
+          right: 30px;
+          width:30%;
+      }
+      .my-style
+      {
+          border-radius: 3;
+      }
+      footer {
+        position:absolute;
+        width:100%;
+        bottom:0;
+        padding:20px;
+        margin-top:20px;
+        color:white;
+        background-color:#070606;
+        text-align:center;
+        }
+
+
+    </style>
     <!--------------------------Navbar Header---------------------->
     <nav class="navbar navbar-expand-lg navbar-dark headerr" style="background-color: black;">
       <a class="navbar-brand pl-5" href="{% url 'main' %}"><img src="{%static '/blog/Untitled.png' %}" /></a>
@@ -117,7 +145,7 @@
  <section style = "height : 70px; background-color: rgb(3, 3, 3); padding:15px ; color:#ffffff;">
       <div style = "width:95%; margin:auto; overflow:hidden;" >
         <h4 style = "float:left; margin-top:10px;" >Search for our products</h4>
-        <form style = "margin-top:15px; margin-bottom: 10px; float:right;" action="{% url 'search' %}" method="GET"> 
+        <form style = "margin-top:15px; margin-bottom: 10px; float:right;" action="{% url 'search2' %}" method="GET"> 
           <button type = "search" style = "float:right; margin-bottom: 10px; height:30px; background-color:#ffffff; border:0; padding-left:20px; padding-right:20px; color:rgb(0, 0, 0);">Search</button>
           <input style = " float:right; margin-bottom: 5px;margin-right: 5px; padding:10px; height:30px; width:250px; " type = "text" name="keyword" placeholder = "Search"> 
            
@@ -127,5 +155,10 @@
     <div class="container" style="float: center;">
       {% block content %}{% endblock %}
     </div>
+
+
+ 
+
+  
     <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
   </body>

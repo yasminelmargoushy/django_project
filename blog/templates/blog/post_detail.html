@@ -176,7 +176,7 @@ input.star:checked ~ .rev-box{
  </div>
   <!------------------ Post your review -------------->
  <div class = "container">
-    
+      {% if user.is_authenticated %}
         <h2 >Post Your Review</h2>
         <br>
     <form class = "form" method="POST" action="/postreview/{{post.id}}/"  enctype="multipart/form-data" >
@@ -203,6 +203,7 @@ input.star:checked ~ .rev-box{
                     </div>
                     </div>
                 </form>
+
                 <br>
                 <label for="exampleFormControlTextarea1"><strong>Review:</strong></label>
                 {{ form|crispy }}
@@ -215,6 +216,10 @@ input.star:checked ~ .rev-box{
         </div>
     
       </form>
+      
+      {% else %}
+    <h5>Sign in to Post Your Review <small><a href="{% url 'login' %}" class="sm">Sign In</a></small></h5>
+    {% endif %}
     
  </div>
     <!-----------------End of product page--------------->

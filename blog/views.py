@@ -14,21 +14,6 @@ from blog.forms import PostReviewForm
 from django.http import JsonResponse
 from django.db.models import Q
 import json
-posts = [
-    {
-        'author': 'CoreyMS',
-        'title': 'Blog Post 1',
-        'content': 'First post content',
-        'date_posted': 'August 27, 2018',
-        'price':'300'
-    },
-    {
-        'author': 'Jane Doe',
-        'title': 'Blog Post 2',
-        'content': 'Second post content',
-        'date_posted': 'August 28, 2018'
-    }
-]
 
 
 def home(request):
@@ -101,6 +86,9 @@ class PostDeleteView(LoginRequiredMixin,UserPassesTestMixin,DeleteView):
 def about(request):
     return render(request, 'blog/about.html',{'title':'About'})
 
+def confirmation(request):
+    return render(request, 'blog/confirmation.html',{'title':'Confirmation'})
+
 
 def main(request):
     return render(request, 'blog/main.html',{'title':'MONTERNO'})
@@ -155,7 +143,7 @@ def search(request):
         'posts': posts
     }
     print(posts)
-    return render (request,'blog/search.html', context)
+    return render (request,'blog/search2.html', context)
 
 
 

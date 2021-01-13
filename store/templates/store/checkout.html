@@ -2,7 +2,7 @@
  {%load static%}
  {% block content %}
 
-
+ <script src="https://kit.fontawesome.com/8d4c067090.js" crossorigin="anonymous"></script>
  <div class = "container" >
         <h1>CHECKOUT</h1>
     </div>
@@ -191,7 +191,7 @@
             </div>
             <hr class = "my-4">
 
-            <button class = "btn btn-success btn-lg btn-block">Place Order</button>
+            <a href="{% url 'confirmation'%}" class = "btn btn-success btn-lg btn-block">Place Order</a>
         </form>
     </div>
 

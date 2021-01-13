@@ -89,10 +89,12 @@ input.star:checked ~ .rev-box{
                   </ol>
                   <div class="carousel-inner card mb-3 border-0">
                       <div class="carousel-item active">
-                          <img class="d-block w-100" src="{{product.image.url}}"  alt = "first slider" style="object-fit: cover;">
+                          <img class="d-block w-100" src="{{product.image.url}}"  alt = "first slider" style="width: 200px;
+                           height: 500px; object-fit: cover;">
                       </div>
                       <div class="carousel-item card mb-3 border-0">
-                          <img class="d-block w-100" src="{{product.image.url}}"  alt = "second slider" style="object-fit: cover;">
+                          <img class="d-block w-100" src="{{product.image.url}}"  alt = "second slider" style=" width: 200px;
+                           height: 500px;object-fit: cover;">
                       </div>
                   </div>
               </div>
@@ -206,6 +208,7 @@ input.star:checked ~ .rev-box{
     {% endif %}
  </div>
  <br><br>
+ {% if related_products %}
         <h1 class="text-center">You might also like</h1>
         <br><br>
           <div class="container">
@@ -223,5 +226,6 @@ input.star:checked ~ .rev-box{
                 {% endfor %}
           </div>
     </div>
+    {% endif %}
     <!-----------------End of product page--------------->
 {% endblock content %}

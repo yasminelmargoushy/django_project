@@ -6,7 +6,7 @@
      {% for related_product in related_products %}
     <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
             <div class="card-img-top">
-                <img src="{{ related_product.image.url }}" class="img-thumbnail p-1" width = "300" height = "300">
+                <img src="{{ related_product.image.url }}" class="img-thumbnail p-1" style="object-fit: cover; width : 100px; height:100px;">
             </div>
             <div class="card-body">
               <h5 class="card-title">{{related_product.name}}</h5>

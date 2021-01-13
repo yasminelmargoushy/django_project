@@ -36,8 +36,18 @@
       background-color: red;
 
     }
- 
- 
+       footer {
+        position: absolute;
+        width:100%;
+        padding:20px;
+        margin-top:20px;
+        color:white;
+        background-color:#070606;
+        text-align:center;
+    }
+
+
+
     </style>
 
     <meta charset="utf-8">
@@ -129,7 +139,7 @@
 
                                 </h1>
                                 <h1> NEW ARRIVALS</h1>
-                                <button class="btn btn-danger"> SHOP NOW!</button>
+                                <a href="{% url 'store' %}" class="btn btn-danger"> SHOP NOW!</a>
 
                             </div>
 
@@ -151,7 +161,7 @@
 
                                 </h1>
                                 <h1> NEW ARRIVALS</h1>
-                                <button class="btn btn-danger"> SHOP NOW!</button>
+                                <a href="{% url 'store' %}" class="btn btn-danger"> SHOP NOW!</a>
 
                             </div>
                         </div>
@@ -169,7 +179,7 @@
 
                                 </h1>
                                 <h1> NEW ARRIVALS</h1>
-                                <button class="btn btn-danger"> SHOP NOW!</button>
+                                <a href="{% url 'store' %}" class="btn btn-danger"> SHOP NOW!</a>
                             </div>
                         </div>
                     </div>
@@ -247,7 +257,11 @@
     </section>
 
 
-
+<div>
+    <footer style="background-color: black;">
+        <p>MONTERO, Copyrights &copy;2020</p>
+    </footer>
+</div>
 
 
 

@@ -1,11 +1,9 @@
-{% extends 'store/base.html' %}
+{% extends 'blog/base2.html' %}
 {% load static %}
 {% block content %}
 <div class="container">
-  <div class="row">
     <div class="col-md-12">
       <h3>Search Results for <span class="text-info">"{{request.GET.keyword}}"</span></h3>
-      <hr>
       {% for product in products %}
         <div class="row">
           <div class="card flex-row flex-wrap m-3" style="width: 19rem; ">
@@ -23,7 +21,6 @@
       {% endfor %}
     </div>
   </div>
-</div>
 </div>
 
 {% endblock content %}
